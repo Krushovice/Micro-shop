@@ -10,7 +10,6 @@ packages = [{include = "micro_shop"}]
 python = "^3.11"
 fastapi = "^0.109.0"
 uvicorn = {extras = ["standart"], version = "^0.26.0"}
-pydentic = {extras = ["email"], version = "^0.0.1.dev3"}
 pydantic = {extras = ["email"], version = "^2.5.3"}
 
 
