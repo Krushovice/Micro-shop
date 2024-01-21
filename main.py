@@ -6,9 +6,11 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
+from api_v1 import router as router_v1
 from items.views import router as items_router
 from users.views import router as users_router
 from core.models import Base, db_helper
+from core.config import settings
 
 
 @asynccontextmanager
@@ -20,6 +22,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
+app.include_router(router_v1, prefix=settings.api_v1_prefix)
 app.include_router(items_router)
 app.include_router(users_router)
 
@@ -29,7 +32,8 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
 def read_root(request: Request):
-    title = "Мини-магазин Крушовца"
+    title = "Главная страница"
+    header = "Мини-магазин Крушовца"
     items = [
         {
             "id": 1,
@@ -52,6 +56,7 @@ def read_root(request: Request):
         name="index.html",
         context={
             "title": title,
+            "header": header,
             "items": items,
         },
     )

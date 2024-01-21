@@ -2,6 +2,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    api_v1_prefix: str = "/api/v1"
     DB_URL: str
     ECHO: bool = True
 

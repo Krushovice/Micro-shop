@@ -4,15 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{title}}</title>
+    <title>
+        {{title}}
+
+    </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
 </head>
 
 <body>
+    <h1> {{header}}</h1>
     {% for item in items %}
-    <h2><a href="{{ url_for('get_item', id=item.id) }}">{{item.name}}</a> - {{ item.price}}
+    <h2><a href="">{{item.name}}</a> - {{ item.price}}
         {%endfor%}
         <script src="" async defer></script>
 </body>
