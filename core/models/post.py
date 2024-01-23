@@ -15,4 +15,4 @@ class Post(Base):
         server_default="",
     )
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    user: Mapped["User"] = relationship("posts")
+    user: Mapped["User"] = relationship(back_populates="posts")
